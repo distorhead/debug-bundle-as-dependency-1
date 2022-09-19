@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cm
+data:
+  img: {{ .Values.werf.image.x }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: worker-1
+  name: worker-1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: worker-1
+  template:
+    metadata:
+      labels:
+        app: worker-1
+    spec:
+      containers:
+      - image: {{ .Values.werf.image.x }}
+        name: worker-1
