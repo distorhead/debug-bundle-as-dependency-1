@@ -9,18 +9,18 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: worker-1
-  name: worker-1
+    app: worker-2
+  name: worker-2
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: worker-1
+      app: worker-2
   template:
     metadata:
       labels:
-        app: worker-1
+        app: worker-2
     spec:
       containers:
       - image: {{ .Values.werf.image.x }}
-        name: worker-1
+        name: worker-2
